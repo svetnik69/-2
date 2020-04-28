@@ -1,0 +1,114 @@
+﻿                                                                    Лабораторна робота №1
+
+CREATE DATABASE librery
+
+CREATE TABLE book
+(number INT NOT NULL,
+cod INT,
+new BOOLEAN,
+name VARCHAR(20),
+price FLOAT,
+sides INT,
+form VARCHAR(20),
+datte DATE,
+circulation INT,
+topic VARCHAR(20),
+category VARCHAR(20)
+);
+
+INSERT INTO `book`(`number`, `cod`, `new`, `name`, `price`, `sides`, `form`, `datte`, `circulation`, `topic`, `category`) VALUES ('2','5110','0','Аппаратные средства мультимедия. Видеосистема РС','15.51','400','70х100/16','2000-07-24','5000','Використання ПК в цілому','Підручники'),
+('8','4985','0','Освой самостоятельно модернизацию и ремонт ПК за 24 часа, 2-е изд','18.90','288','70х100/16','2000-07-07','5000','Використання ПК в цілому','Підручники'),
+('9','5141','0','Структуры данных и алгоритмы','37.80','384','70х100/16','2000-09-29','5000','Використання ПК в цілому','Підручники'), 
+('20','5127','1','Автоматизация инженерно- графических работ','11.58','256','70х100/16','2000-06-15','5000','Використання ПК в цілому','Підручники'), 
+('31','5110','0','Аппаратные средства мультимедия. Видеосистема РС','15.51','400','70х100/16','2000-07-24','5000','Використання ПК в цілому','Апаратні засоби ПК'),
+('46','5199','0','Железо IBM 2001','30.07','368','70х100/16','2000-02-12','5000','Використання ПК в цілому','Апаратні засоби ПК'),
+('50','3851','1','Защита информации и безопасность компьютерных систем','26.00','480','84х108/16','1999-02-04','5000','Використання ПК в цілому','Захист і безпека ПК'),
+('58','3932','0','Как превратить персональный компьютер в измерительный комплекс','7.65','144','60х88/16','1999-09-06','5000','Використання ПК в цілому','Інші книги'),
+('59','4713','0','Plug- ins. Встраиваемые приложения для музыкальных программ','11.41','144','70х100/16','2000-02-22','5000','Використання ПК в цілому','Інші книги'),
+('175','5217','0','Windows МЕ. Новейшие версии программ','16.57','320','70х100/16','2000-08-25','5000','Операційні системи','Windows 2000'),
+('176','4829','0','Windows 2000 Professional шаг за шагом с СD','27.25','320','70х100/16','2000-04-28','5000','Операційні системи','Windows 2000'),
+('188','5170','0','Linux Русские версии','24.43','346','70х100/16','2000-09-29','5000','Операційні системи','Linux'),
+('191','860','0','Операционная система UNIX','3.50','395','84х100/16','1997-05-05','5000','Операційні системи','Unix'),
+('203','44','0','Ответы на актуальные вопросы по OS/2 Warp','5.00','352','60х84/16','1996-03-20','5000','Операційні системи','Інші операційні системи'),
+('206','5176','0','Windows Ме. Спутник пользователя','12.79','306','60х84/16','2000-10-10','5000','Операційні системи','Інші операційні системи'),
+('209','5462','0','Язык программирования С++. Лекции и упражнения','29.00','656','84х108/16','2000-12-12','5000','Програмування','C&C++'),
+('210','4982','0','Язык программирования С. Лекции и упражнения','29.00','432','84х108/16','2000-07-12','5000','Програмування','C&C++'),
+('220','4687','0','Эффективное использование C++ .50 рекомендаций по улучшению ваших программ и проектов','17.60','240','70х100/16','2000-02-03','5000','Програмування','C&C++')
+
+2.a)DROP DATABASE  librery
+   b) CREATE DATABASE librery
+   c)CREATE TABLE book
+(number INT NOT NULL,
+cod INT NOT NULL PRIMARY KEY ,
+new BOOLEAN,
+name VARCHAR(20) NOT NULL,
+price FLOAT NOT NULL,
+sides INT NOT NULL,
+form VARCHAR(20) NOT NULL,
+datte DATE NOT NULL,
+circulation INT NOT NULL,
+topic VARCHAR(20) NOT NULL,
+category VARCHAR(20) NOT NULL
+);
+d)CREATE INDEX NIndex ON book (number);
+e)INSERT INTO `book`(`number`, `cod`, `new`, `name`, `price`, `sides`, `form`, `datte`, `circulation`, `topic`, `category`) VALUES ....
+3.a)CREATE INDEX NIndex ON book (number);
+   b)ALTER TABLE book MODIFY COLUMN Author varchar(20);
+  d)ALTER TABLE  book DROP COLUMN  Author;
+                                                                                   Лабораторна робота №2
+1.SELECT number, cod, new, name, price, form FROM  book;
+2.SELECT * FROM  book;
+3.SELECT cod, name, new, form, price, number FROM book;
+4.SELECT * FROM  book  LIMIT 10;
+6.SELECT DISTINCT 'cod' FROM  book;
+7.SELECT * FROM  book WHERE new =1;
+8.SELECT  `new`,`price`FROM book WHERE `price` BETWEEN 20 AND 30;
+9.SELECT  `new`,`price`FROM book WHERE `price`>=30 AND `price`<=20;?
+10.SELECT * FROM  book WHERE `sides`>=300 AND `sides`<=400 AND `price`>=20 AND `price`<=30;
+11.SELECT name,datte  FROM  book WHERE datte BETWEEN `2000-12-01`AND `2000-12-31`;
+12.SELECT * FROM  book WHERE (`cod` IN (5110 ,5141, 4985, 4241));
+13.SELECT *FROM  book WHERE  (YEAR(datte ) IN (1999,2001,2003, 2005));
+14.SELECT name FROM  book WHERE name BETWEEN 'А' AND 'К';
+15.SELECT name, price,datte FROM  book WHERE name LIKE 'Апп%' AND YEAR(datte) =2000 AND price<=20;
+16.SELECT name, datte FROM  book WHERE name LIKE 'Апп%'AND LIKE '%е' AND datte BETWEEN '2000.01.01' AND '2000.06.30';
+17. SELECT name FROM  book WHERE  name LIKE '%Windows%'AND NOT name LIKE '%Microsoft%';
+18.SELECT * FROM book WHERE name REGEXP'[0..9]{1,}'; або SELECT *FROM  book WHERE  name  LIKE '%[01-9]';
+19.SELECT * FROM book WHERE name REGEXP'[0..9]{3,}';
+20.SELECT name FROM  book WHERE  name  LIKE %[01-9]%[01-9]%[0-9]%[0-9]%[0-9]`;
+
+                                                                           Лабораторна робота №3
+1. SELECT 'name', 'price' FROM 'book' WHERE NOT price OR price= 0;
+2. SELECT 'name', 'price', 'circulation FROM book WHERE NOT circulation;
+3. SELECT 'name', 'datte' FROM 'book' WHERE NOT datte;
+4. SELECT 'name', 'datte' FROM 'book' WHERE datte !> ;
+5. SELECT 'name', 'price' FROM 'book' ORDER BY price ASC;
+6. SELECT 'name', 'sides' FROM 'book' WHERE sides BETWEEN 300 AND 400 ORDER BY name DESC;
+7. SELECT 'name', 'price', 'datte' FROM 'book' WHERE price BETWEEN 20 AND 40 ORDER BY datte DESC;
+8. SELECT 'name', 'price' FROM 'book' ORDER BY name AND price DESC;
+9. SELECT  `name`, `price`, `sides` FROM `book` WHERE `price`/`sides`<0.1;
+10.SELECT UCASE(name) FROM `book`;
+11. SELECT CONCAT(UPPER(SUBSTRING(`name`, 1, 10)), UPPER(RIGHT(`name`, 10))) FROM `book`;
+12. SELECT `name`, DAY(datte), MONTH (datte), YEAR (datte) FROM `book`;
+13. SELECT `name`, date_format(`datte`,'%d/%m/%Y') FROM `book`;
+14. SELECT `cod`, `name`, price*27.8, price*0.93, price*74.53 FROM `book`;
+15. SELECT `cod`, `name`, round (price*27.8, 0) FROM `book`;
+16.INSERT INTO `book`(`number`, `cod`, `new`, `name`, `price`, `sides`, `form`, `datte`, `circulation`, `topic`, `category`) VALUES 
+('221','4688','1','Эффективное использование C++','17.60','240','70х100/16','2000-02-03','5000','Програмування','C&C++');
+17. INSERT INTO `book`(`cod`, `new`, `name`, `price`, `sides`) VALUES 
+('4688','1','Эффективное использование C++','17.60','240');
+18. DELETE FROM `book` WHERE `datte` < `1990-01-01`;
+19.UPDATE `book`SET `datte`= CURRENT_DATE WHERE `datte`= NULL;
+20.UPDATE `book` SET `new`= 1 WHERE `datte`>`2005-01-31`;
+
+                                                                                       ЛР4
+1.SELECT COUNT(name), SUM(price),AVG(price),MAX(price), MIN(price) FROM book; 
+2.SELECT COUNT(name)FROM bookWHERE  price<>0; 
+3.SELECT COUNT(name), SUM(price),MAX(price), MIN(price) FROM book WHERE new=1;
+   SELECT COUNT(name), SUM(price),MAX(price), MIN(price) FROM book WHERE new=0;
+4.SELECT COUNT(name), SUM(price),AVG(price),MAX(price), MIN(price) FROM book WHERE YEAR(datte )=2000; 
+5.SELECT COUNT(name), SUM(price),MAX(price), MIN(price) FROM book WHERE price NOT BETWEEN 10 AND 20 AND YEAR(datte )=2000;
+6.SELECT COUNT(name), SUM(price),MAX(price), MIN(price) FROM book ORDER BY(name,price) DESC;, SUM(price),MAX(price), MIN(price) FROM book ORDER BY(name,price) DESC;?
+7.SELECT COUNT(DISTINCT cod),COUNT(cod) FROM book; 
+8.SELECT COUNT(name), SUM(price) FROM book WHERE name LIKE '_%';
+9.SELECT COUNT(name), SUM(price) FROM book WHERE name NOT LIKE '[0-9%]'AND name  NOT LIKE '[a-z%]';
+
